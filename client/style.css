@@ -34,3 +34,35 @@
     letter-spacing: 1px;
     line-height: 2;
 }
+
+.image{
+display: flex;
+justify-content: center;
+}
+
+@media screen and (max-width:800px){
+    body{
+        display: flex;
+        flex-direction: column;
+
+    }
+    
+    #initial{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .title{
+        font-size: 0.8rem;
+    }
+
+    img{
+        height: 50px;
+   
+    }
+}
+@media screen and (max-width:440px){
+body{
+    width: 80vh;
+}
+}
