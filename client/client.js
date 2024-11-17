@@ -77,7 +77,7 @@ function sendChoice(rpsValue) {
     });
     let playerChoiceButton = document.createElement('button');
     playerChoiceButton.style.display = 'block';
-    playerChoiceButton.classList.add(rpsValue.toString().toLowerCase());
+    playerChoiceButton.classList.add(data.rpsval.toString().toLowerCase());
     playerChoiceButton.innerText = rpsValue;
     document.getElementById('player1Choice').innerHTML = "";
     document.getElementById('player1Choice').appendChild(playerChoiceButton);
@@ -87,7 +87,7 @@ function createOpponentChoiceButton(data) {
     document.getElementById('opponentState').innerHTML = "Opponent made a choice";
     let opponentButton = document.createElement('button');
     opponentButton.id = 'opponentButton';
-    opponentButton.classList.add(data.rpsValue.toString().toLowerCase());
+    opponentButton.classList.add(data.rpsval.toString().toLowerCase());
     opponentButton.style.display = 'none';
     opponentButton.innerText = data.rpsValue;
     document.getElementById('player2Choice').appendChild(opponentButton);
