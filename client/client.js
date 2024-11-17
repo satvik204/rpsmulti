@@ -67,12 +67,27 @@ socket.on("result",(data)=>{
     document.getElementById('opponentState').style.display = 'none';
     document.getElementById('opponentButton').style.display = 'block';
     document.getElementById('winnerArea').innerHTML = winnerText;
+    const playAgainButton = document.createElement('button');
+    playAgainButton.innerText = "Play Again";
+    playAgainButton.classList.add('btn', 'btn-primary', 'my-3');
+    playAgainButton.onclick = () => {
+        socket.emit("reround", { roomUniqueId });
+    };
+    document.getElementById('winnerArea').appendChild(playAgainButton);
 
-    setInterval(() => {
-        location.reload();
-        document.getElementById("initial").style.display = "none";
-        document.getElementById("gameArea").style.display = "block";
-    },7000);
+});
+
+socket.on("newRound", () => {
+    // Reset UI for a new round
+    document.getElementById('winnerArea').innerHTML = '';
+    document.getElementById('player1Choice').innerHTML = `
+        <button class="rock" onclick="sendChoice('Rock')">Rock</button>
+        <button class="paper" onclick="sendChoice('Paper')">Paper</button>
+        <button class="scissor" onclick="sendChoice('Scissor')">Scissors</button>
+    `;
+    document.getElementById('player2Choice').innerHTML = `
+        <p id="opponentState">Waiting for Opponent</p>
+    `;
 });
 
 function sendChoice(rpsValue) {

@@ -58,6 +58,16 @@ io.on('connection',(socket)=>{
         rooms[data.roomUniqueId].p1Choice = null;
         rooms[data.roomUniqueId].p2Choice = null;
     })
+
+    socket.on("reround", (data) => {
+        // Reset game state for the room
+        if (rooms[data.roomUniqueId]) {
+            rooms[data.roomUniqueId].p1Choice = null;
+            rooms[data.roomUniqueId].p2Choice = null;
+            // Notify players to start a new round
+            io.to(data.roomUniqueId).emit("newRound");
+        }
+    });
 } )
 
 
