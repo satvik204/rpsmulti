@@ -77,7 +77,7 @@ function sendChoice(rpsValue) {
     });
     let playerChoiceButton = document.createElement('button');
     playerChoiceButton.style.display = 'block';
-    playerChoiceButton.classList.add(data.rpsValue.toString().toLowerCase());
+    playerChoiceButton.classList.add(rpsValue.toString().toLowerCase());
     playerChoiceButton.innerText = rpsValue;
     document.getElementById('player1Choice').innerHTML = "";
     document.getElementById('player1Choice').appendChild(playerChoiceButton);
