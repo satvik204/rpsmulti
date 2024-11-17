@@ -67,6 +67,12 @@ socket.on("result",(data)=>{
     document.getElementById('opponentState').style.display = 'none';
     document.getElementById('opponentButton').style.display = 'block';
     document.getElementById('winnerArea').innerHTML = winnerText;
+
+    setInterval(() => {
+        location.reload();
+        document.getElementById("initial").style.display = "none";
+        document.getElementById("gameArea").style.display = "block";
+    },7000);
 });
 
 function sendChoice(rpsValue) {
