@@ -97,9 +97,9 @@ function declareWinner(roomUniqueId){
             if (p2Choice == "Scissor") {
                 winner = "p1"
                                  
-            }
             }else{
                 winner = "p2"
+            }
             }
         
     
