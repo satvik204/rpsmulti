@@ -62,19 +62,23 @@ socket.on("result",(data)=>{
             p2text.innerText = p2score;
         } else if(data.winner == 'p1') {
             winnerText = 'You lose';
+            p1score += 1;
+
             p1text.innerText = p1score;
             p2text.innerText = p2score;
         
         } else if(data.winner == 'p2' && !player1) {
             winnerText = 'You win';
             p2score += 1;
-            p1text.innerText = p1score;
-            p2text.innerText = p2score;
+            p1text.innerText = p2score;
+            p2text.innerText = p1score;
         
         } else if(data.winner == 'p2') {
             winnerText = 'You lose';
-            p1text.innerText = p1score;
-            p2text.innerText = p2score;
+            p2score += 1;
+            
+            p1text.innerText = p2score;
+            p2text.innerText = p1score;
         
         }
     } else {
