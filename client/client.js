@@ -64,8 +64,8 @@ socket.on("result",(data)=>{
             winnerText = 'You lose';
             p1score += 1;
 
-            p1text.innerText = p1score;
-            p2text.innerText = p2score;
+            p1text.innerText = p2score;
+            p2text.innerText = p1score;
         
         } else if(data.winner == 'p2' && !player1) {
             winnerText = 'You win';
@@ -77,8 +77,8 @@ socket.on("result",(data)=>{
             winnerText = 'You lose';
             p2score += 1;
             
-            p1text.innerText = p2score;
-            p2text.innerText = p1score;
+            p1text.innerText = p1score;
+            p2text.innerText = p2score;
         
         }
     } else {
@@ -109,7 +109,7 @@ socket.on("newRound", () => {
         <p id="opponentState">Waiting for Opponent</p>
     `;
     document.getElementById('score').innerHTML = `<div>Score:</div>
-          <div><span class="p1score">${player1 ? p1score : p2score}</span>-<span class="p2score">${!player1 ? p1score : p2score}</span></div>`;
+          <div><span id="p1score">${player1 ? p1score : p2score}</span>-<span id="p2score">${!player1 ? p1score : p2score}</span></div>`;
 });
 
 function sendChoice(rpsValue) {
