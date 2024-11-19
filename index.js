@@ -94,12 +94,12 @@ function declareWinner(roomUniqueId){
             }
         }
         else if (p1Choice == "Rock") {
-            if (p2Choice == "Scissors") {
+            if (p2Choice == "Scissor") {
                 winner = "p1"
                                  
-            }
             }else{
                 winner = "p2"
+            }
             }
         
     
