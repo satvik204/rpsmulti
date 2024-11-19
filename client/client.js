@@ -1,7 +1,10 @@
 const socket = io();
 let roomUniqueId = null;
 let player1 = false;
-
+let p1score = 0;
+let p2score = 0;
+const p1text  = document.getElementById('p1score')
+const p2text  = document.getElementById('p2score')
 function createGame() {
     player1 = true;
     socket.emit('createGame');
@@ -54,12 +57,25 @@ socket.on("result",(data)=>{
     if(data.winner != 'd') {
         if(data.winner == 'p1' && player1) {
             winnerText = 'You win';
+            p1score += 1;
+            p1text.innerText = p1score;
+            p2text.innerText = p2score;
         } else if(data.winner == 'p1') {
             winnerText = 'You lose';
+            p1text.innerText = p1score;
+            p2text.innerText = p2score;
+        
         } else if(data.winner == 'p2' && !player1) {
             winnerText = 'You win';
+            p2score += 1;
+            p1text.innerText = p1score;
+            p2text.innerText = p2score;
+        
         } else if(data.winner == 'p2') {
             winnerText = 'You lose';
+            p1text.innerText = p1score;
+            p2text.innerText = p2score;
+        
         }
     } else {
         winnerText = `It's a draw`;
@@ -88,6 +104,8 @@ socket.on("newRound", () => {
     document.getElementById('player2Choice').innerHTML = `
         <p id="opponentState">Waiting for Opponent</p>
     `;
+    document.getElementById('score').innerHTML = `<div>Score:</div>
+          <div><span class="p1score">${player1 ? p1score : p2score}</span>-<span class="p2score">${!player1 ? p1score : p2score}</span></div>`;
 });
 
 function sendChoice(rpsValue) {
